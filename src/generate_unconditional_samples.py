@@ -72,10 +72,10 @@ def sample_model(
         while nsamples == 0 or generated < nsamples:
             out = sess.run(output)
             for i in range(batch_size):
-                generated += batch_size
                 text = enc.decode(out[i])
-                print("=" * 40 + " SAMPLE " + str(generated) + " " + "=" * 40)
+                print("=" * 40 + " SAMPLE " + str(generated + i + 1) + " " + "=" * 40)
                 print(text)
+            generated += batch_size
 
 if __name__ == '__main__':
     fire.Fire(sample_model)

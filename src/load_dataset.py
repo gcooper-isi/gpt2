@@ -5,7 +5,7 @@ import tensorflow as tf
 import tqdm
 
 
-def load_dataset(enc, path, combine, encoding=None):
+def load_dataset(enc, path, combine, encoding='utf8'):
     paths = []
     if os.path.isfile(path):
         # Simple file

@@ -28,7 +28,8 @@ def maketree(path):
 
 
 def train_main(dataset,
-               model_name='117M',
+               model_name,
+               models_dir,
                seed=None,
                batch_size=2,
                sample_length=1023,
@@ -39,9 +40,9 @@ def train_main(dataset,
                save_every=2000,
                combine=50000):
 
-    enc = encoder.get_encoder(model_name)
+    enc = encoder.get_encoder(model_name, models_dir)
     hparams = model.default_hparams()
-    with open(os.path.join('models', model_name, 'hparams.json')) as f:
+    with open(os.path.join(models_dir, model_name, 'hparams.json')) as f:
         hparams.override_from_dict(json.load(f))
 
     if sample_length is None:
